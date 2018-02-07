@@ -88,20 +88,20 @@
 
 
 
-<meta name="description" content="现在我们想要往图片上打上水印，该水印应符合这样的需求：  支持logo+文字； 文字信息支持多行展示； 用户可以选择水印在图片上的生成位置（左上、右上、右下和左下）。  粗略的界面结构图低配版大概就长这样…  现在提供这样的一种思路去实现这一个需求，我们可以通过自定义一个view，view的布局中包含logo、公司名称和相关信息，这个view就是我们要打上图片的水印。 这样的一个view其实是一个">
+<meta name="description" content="现在我们想要往图片上打上水印，该水印应符合这样的需求：  支持logo+文字； 文字信息支持多行展示； 用户可以选择水印在图片上的生成位置（左上、右上、右下和左下）。  粗略的界面结构图低配版大概就长这样…">
 <meta name="keywords" content="自定义View">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义View实践之给图片加上水印（支持logo+文字）吧！">
 <meta property="og:url" content="http://echomu.github.io/2017/08/01/自定义View实践之给图片加上水印（支持logo-文字）吧！/index.html">
 <meta property="og:site_name" content="echoMu">
-<meta property="og:description" content="现在我们想要往图片上打上水印，该水印应符合这样的需求：  支持logo+文字； 文字信息支持多行展示； 用户可以选择水印在图片上的生成位置（左上、右上、右下和左下）。  粗略的界面结构图低配版大概就长这样…  现在提供这样的一种思路去实现这一个需求，我们可以通过自定义一个view，view的布局中包含logo、公司名称和相关信息，这个view就是我们要打上图片的水印。 这样的一个view其实是一个">
+<meta property="og:description" content="现在我们想要往图片上打上水印，该水印应符合这样的需求：  支持logo+文字； 文字信息支持多行展示； 用户可以选择水印在图片上的生成位置（左上、右上、右下和左下）。  粗略的界面结构图低配版大概就长这样…">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/817079-a023ab2dfc726bb8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/817079-e31e704b7d9bc362.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-02-07T08:15:41.766Z">
+<meta property="og:updated_time" content="2018-02-07T08:20:57.624Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义View实践之给图片加上水印（支持logo+文字）吧！">
-<meta name="twitter:description" content="现在我们想要往图片上打上水印，该水印应符合这样的需求：  支持logo+文字； 文字信息支持多行展示； 用户可以选择水印在图片上的生成位置（左上、右上、右下和左下）。  粗略的界面结构图低配版大概就长这样…  现在提供这样的一种思路去实现这一个需求，我们可以通过自定义一个view，view的布局中包含logo、公司名称和相关信息，这个view就是我们要打上图片的水印。 这样的一个view其实是一个">
+<meta name="twitter:description" content="现在我们想要往图片上打上水印，该水印应符合这样的需求：  支持logo+文字； 文字信息支持多行展示； 用户可以选择水印在图片上的生成位置（左上、右上、右下和左下）。  粗略的界面结构图低配版大概就长这样…">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/817079-a023ab2dfc726bb8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -340,6 +340,7 @@
 <li>用户可以选择水印在图片上的生成位置（左上、右上、右下和左下）。</li>
 </ol>
 <p>粗略的界面结构图低配版大概就长这样…</p>
+<a id="more"></a>
 <p><img src="http://upload-images.jianshu.io/upload_images/817079-a023ab2dfc726bb8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="水印结构图.png"></p>
 <p>现在提供这样的一种思路去实现这一个需求，我们可以通过自定义一个view，view的布局中包含logo、公司名称和相关信息，这个view就是我们要打上图片的水印。</p>
 <p>这样的一个view其实是一个自定义组合布局，关于如何实现组合布局的自定义view，可以参考这篇文章：<a href="http://www.jianshu.com/p/d378523a00d9" target="_blank" rel="noopener">Android 自定义View实践之组合控件实现布局的复用</a></p>

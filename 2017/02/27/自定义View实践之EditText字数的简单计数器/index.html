@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="这是继承View类的子类来实现自定义View的例子。 写一个类似于微博的140字限制的简单文本计算器，实现的思路是继承TextView,绑定一个EditText，通过添加EditText的addTextChangedListener，对调用者提供当前自定义View的回调接口，实现超出字数的回调。 自定义属性如下： 123456789&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;">
+<meta name="description" content="这是继承View类的子类来实现自定义View的例子。 写一个类似于微博的140字限制的简单文本计算器，实现的思路是继承TextView,绑定一个EditText，通过添加EditText的addTextChangedListener，对调用者提供当前自定义View的回调接口，实现超出字数的回调。">
 <meta name="keywords" content="自定义View">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义View实践之EditText字数的简单计数器">
 <meta property="og:url" content="http://echomu.github.io/2017/02/27/自定义View实践之EditText字数的简单计数器/index.html">
 <meta property="og:site_name" content="echoMu">
-<meta property="og:description" content="这是继承View类的子类来实现自定义View的例子。 写一个类似于微博的140字限制的简单文本计算器，实现的思路是继承TextView,绑定一个EditText，通过添加EditText的addTextChangedListener，对调用者提供当前自定义View的回调接口，实现超出字数的回调。 自定义属性如下： 123456789&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;">
+<meta property="og:description" content="这是继承View类的子类来实现自定义View的例子。 写一个类似于微博的140字限制的简单文本计算器，实现的思路是继承TextView,绑定一个EditText，通过添加EditText的addTextChangedListener，对调用者提供当前自定义View的回调接口，实现超出字数的回调。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-07T08:06:26.669Z">
+<meta property="og:updated_time" content="2018-02-07T08:22:28.264Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义View实践之EditText字数的简单计数器">
-<meta name="twitter:description" content="这是继承View类的子类来实现自定义View的例子。 写一个类似于微博的140字限制的简单文本计算器，实现的思路是继承TextView,绑定一个EditText，通过添加EditText的addTextChangedListener，对调用者提供当前自定义View的回调接口，实现超出字数的回调。 自定义属性如下： 123456789&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;">
+<meta name="twitter:description" content="这是继承View类的子类来实现自定义View的例子。 写一个类似于微博的140字限制的简单文本计算器，实现的思路是继承TextView,绑定一个EditText，通过添加EditText的addTextChangedListener，对调用者提供当前自定义View的回调接口，实现超出字数的回调。">
 
 
 
@@ -332,6 +332,7 @@
       
         <p>这是继承View类的子类来实现自定义View的例子。</p>
 <p>写一个类似于微博的140字限制的简单文本计算器，实现的思路是继承TextView,绑定一个EditText，通过添加EditText的addTextChangedListener，对调用者提供当前自定义View的回调接口，实现超出字数的回调。</p>
+<a id="more"></a>
 <p>自定义属性如下：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span><br><span class="line">  &lt;resources&gt;</span><br><span class="line">    &lt;declare-styleable name=<span class="string">"CountCharTextView"</span>&gt;</span><br><span class="line">      &lt;!--用户可输入的最大字数--&gt;</span><br><span class="line">      &lt;attr name="maxChars" format="integer"&gt;&lt;/attr&gt;</span><br><span class="line">      &lt;!--溢出字数提示--&gt;</span><br><span class="line">      &lt;attr name="exceedTextColor" format="color"&gt;&lt;/attr&gt;</span><br><span class="line">    &lt;/declare-styleable&gt;</span><br><span class="line">  &lt;/resources&gt;</span><br></pre></td></tr></table></figure>
 <p>继承TextView，实现以下CountCharTextView：</p>

@@ -88,19 +88,19 @@
 
 
 
-<meta name="description" content="最近，某个项目需要加载的网页内容中，含有一个优酷视频。跑起来出现了问题，优酷视频提示错误：请允许cookie存储 从这个错误提示来看，这里存在cookie存储的相关问题。是否是本地webView没有允许cookie存储？ WebView是基于webkit内核的UI控件，相当于一个浏览器客户端。它会在本地维护每次会话的cookie(保存在data/data/package_name/app_WebV">
+<meta name="description" content="最近，某个项目需要加载的网页内容中，含有一个优酷视频。跑起来出现了问题，优酷视频提示错误：请允许cookie存储 从这个错误提示来看，这里存在cookie存储的相关问题。是否是本地webView没有允许cookie存储？">
 <meta name="keywords" content="webView">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webView加载网页播放优酷视频引发“请允许cookie存储”问题的解决">
 <meta property="og:url" content="http://echomu.github.io/2017/04/09/webView加载网页播放优酷视频引发“请允许cookie存储”问题的解决/index.html">
 <meta property="og:site_name" content="echoMu">
-<meta property="og:description" content="最近，某个项目需要加载的网页内容中，含有一个优酷视频。跑起来出现了问题，优酷视频提示错误：请允许cookie存储 从这个错误提示来看，这里存在cookie存储的相关问题。是否是本地webView没有允许cookie存储？ WebView是基于webkit内核的UI控件，相当于一个浏览器客户端。它会在本地维护每次会话的cookie(保存在data/data/package_name/app_WebV">
+<meta property="og:description" content="最近，某个项目需要加载的网页内容中，含有一个优酷视频。跑起来出现了问题，优酷视频提示错误：请允许cookie存储 从这个错误提示来看，这里存在cookie存储的相关问题。是否是本地webView没有允许cookie存储？">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/817079-b98c96477f367fef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-02-07T08:15:07.095Z">
+<meta property="og:updated_time" content="2018-02-07T08:21:48.452Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webView加载网页播放优酷视频引发“请允许cookie存储”问题的解决">
-<meta name="twitter:description" content="最近，某个项目需要加载的网页内容中，含有一个优酷视频。跑起来出现了问题，优酷视频提示错误：请允许cookie存储 从这个错误提示来看，这里存在cookie存储的相关问题。是否是本地webView没有允许cookie存储？ WebView是基于webkit内核的UI控件，相当于一个浏览器客户端。它会在本地维护每次会话的cookie(保存在data/data/package_name/app_WebV">
+<meta name="twitter:description" content="最近，某个项目需要加载的网页内容中，含有一个优酷视频。跑起来出现了问题，优酷视频提示错误：请允许cookie存储 从这个错误提示来看，这里存在cookie存储的相关问题。是否是本地webView没有允许cookie存储？">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/817079-b98c96477f367fef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -334,6 +334,7 @@
       
         <p>最近，某个项目需要加载的网页内容中，含有一个优酷视频。跑起来出现了问题，优酷视频提示错误：请允许cookie存储<br><img src="http://upload-images.jianshu.io/upload_images/817079-b98c96477f367fef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
 <p>从这个错误提示来看，这里存在cookie存储的相关问题。是否是本地webView没有允许cookie存储？</p>
+<a id="more"></a>
 <p>WebView是基于webkit内核的UI控件，相当于一个浏览器客户端。它会在本地维护每次会话的cookie(保存在data/data/package_name/app_WebView/Cookies.db)。</p>
 <p>当WebView加载URL的时候,WebView会从本地读取该URL对应的cookie，并携带该cookie与服务器进行通信。WebView通过android.webkit.<a href="https://developer.android.com/reference/android/webkit/CookieManager.html" target="_blank" rel="noopener">CookieManager</a>类来维护cookie。<a href="https://developer.android.com/reference/android/webkit/CookieManager.html" target="_blank" rel="noopener">CookieManager</a>是WebView的cookie管理类。</p>
 <p>那么，这里到底是哪里存在问题？考虑到出现该问题的设备是出现在Android 5.0系统上，于是翻阅Android开发者文档，找到<a href="https://developer.android.com/about/versions/android-5.0-changes.html" target="_blank" rel="noopener">Home&gt;Lollipop&gt;Android 5.0 行为变更</a>这一章节（请科学上网）。找到WebView这一部分的描述如下：</p>
