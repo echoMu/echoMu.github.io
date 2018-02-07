@@ -5,9 +5,9 @@
   <subtitle>听风在鼓舞，还有我作伴</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://echomu.github.io/"/>
   <updated>2018-02-07T06:58:20.417Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://echomu.github.io/</id>
   
   <author>
     <name>echoMu</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2018/02/05/hello-world/"/>
-    <id>http://yoursite.com/2018/02/05/hello-world/</id>
+    <link href="http://echomu.github.io/2018/02/05/hello-world/"/>
+    <id>http://echomu.github.io/2018/02/05/hello-world/</id>
     <published>2018-02-05T02:54:01.512Z</published>
     <updated>2018-02-07T06:58:20.417Z</updated>
     
