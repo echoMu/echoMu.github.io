@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="echoMu">
 <meta property="og:description" content="在AS中利用gradle打包，可以高效并且自由地配置各种参数，发布不同的版本。关于配置gradle文件的一些做法，总结为如下。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-07T08:52:35.455Z">
+<meta property="og:updated_time" content="2018-02-07T09:17:58.735Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用gradle打包的各种配置">
 <meta name="twitter:description" content="在AS中利用gradle打包，可以高效并且自由地配置各种参数，发布不同的版本。关于配置gradle文件的一些做法，总结为如下。">
@@ -331,11 +331,8 @@
 
       
         <p>在AS中利用gradle打包，可以高效并且自由地配置各种参数，发布不同的版本。关于配置gradle文件的一些做法，总结为如下。</p>
-<!--- more ->
-
-####一.替换AndroidManifest中的占位符
-举个例子，在AndroidManifest文件中，我们将极光推送的key值指定为一个占位符
-
+<a id="more"></a>
+<p>####一.替换AndroidManifest中的占位符<br>举个例子，在AndroidManifest文件中，我们将极光推送的key值指定为一个占位符</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 极光KEY --&gt;</span><br><span class="line">&lt;meta-data    </span><br><span class="line">  android:name=<span class="string">"JPUSH_APPKEY"</span>   </span><br><span class="line">  android:value=<span class="string">"$&#123;JPUSH_APPKEY&#125;"</span> /&gt;</span><br></pre></td></tr></table></figure>
 <p>在build.gradle文件中，这里介绍3种方法去替换该占位符<br>1.接收gradlew assemble命令输入的自定义参数的值</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">manifestPlaceholders = [        </span><br><span class="line">            <span class="comment">// 默认是正式的极光key        </span></span><br><span class="line">            JPUSH_APPKEY: <span class="string">"\""</span> + JPUSH_APPKEY_PARA + <span class="string">"\""</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
@@ -379,7 +376,7 @@
 <p>每次修改project级别的build.gradle即可实现全局统一配置。</p>
 <p>####五.混淆代码<br>release版本开启混淆</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//混淆编译</span></span><br><span class="line">minifyEnabled <span class="keyword">true</span></span><br><span class="line"><span class="function">proguardFiles <span class="title">getDefaultProguardFile</span><span class="params">(<span class="string">'proguard-android.txt'</span>)</span>, 'proguard-rules.pro'</span></span><br></pre></td></tr></table></figure>
-<p>混淆文件可以参考这篇文章进行配置<a href="http://www.jianshu.com/p/e19cc5194a31">Android代码混淆在AS的实践</a></p>
+<p>混淆文件可以参考这篇文章进行配置<a href="http://www.jianshu.com/p/e19cc5194a31" target="_blank" rel="noopener">Android代码混淆在AS的实践</a></p>
 <p>####六.动态设置一些额外信息<br>把当前的编译时间、编译的机器、最新的commit版本添加到apk</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">android &#123; </span><br><span class="line">  defaultConfig &#123; </span><br><span class="line">      resValue <span class="string">"string"</span>, <span class="string">"build_time"</span>, buildTime() </span><br><span class="line">      resValue <span class="string">"string"</span>, <span class="string">"build_host"</span>, hostName() </span><br><span class="line">      resValue <span class="string">"string"</span>, <span class="string">"build_revision"</span>, revision() </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">def <span class="title">buildTime</span><span class="params">()</span> </span>&#123; </span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Date().format(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">def <span class="title">hostName</span><span class="params">()</span> </span>&#123; </span><br><span class="line">      <span class="keyword">return</span> System.getProperty(<span class="string">"user.name"</span>) + <span class="string">"@"</span> + InetAddress.localHost.hostName</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">def <span class="title">revision</span><span class="params">()</span> </span>&#123; </span><br><span class="line">      def code = <span class="keyword">new</span> ByteArrayOutputStream() </span><br><span class="line">      exec &#123; </span><br><span class="line">        commandLine <span class="string">'git'</span>, <span class="string">'rev-parse'</span>, <span class="string">'--short'</span>, <span class="string">'HEAD'</span> </span><br><span class="line">        standardOutput = code </span><br><span class="line">      &#125; </span><br><span class="line">      <span class="keyword">return</span> code.toString()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上述代码实现了动态的添加了3个字符串资源: build_time、build_host、build_revision, 然后在其他地方可像如引用字符串一样使用如下：</p>
@@ -398,8 +395,8 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">defaultConfig &#123;</span><br><span class="line">  <span class="keyword">if</span> (project.hasProperty(<span class="string">'JPUSH_APPKEY_PARA'</span>)) &#123;    </span><br><span class="line">    <span class="comment">//如果有指定极光key的自定义参数，那么就设置极光推送测试key对应的appId</span></span><br><span class="line">    applicationId project.APPLICATIONID_JPUSH</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;    </span><br><span class="line">    <span class="comment">//工程本来的appId    </span></span><br><span class="line">    applicationId project.APPLICATIONID_RELEASE</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">   manifestPlaceholders = [                </span><br><span class="line">      <span class="comment">// 默认是正式的极光key</span></span><br><span class="line">      JPUSH_APPKEY: project.JPUSH_APPKEY_VALUE_RELEASE        </span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>也可配合buildConfigField自定义配置：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">buildConfigField(<span class="string">"String"</span>, <span class="string">"BASE_URL"</span>, <span class="string">"\""</span> + project.BASE_URL_TEST + <span class="string">"\""</span>)</span><br></pre></td></tr></table></figure>
-<p><a href="https://github.com/mumubin5/Android-">github版本:Android 使用gradle打包的各种配置</a></p>
--->
+<p><a href="https://github.com/mumubin5/Android-" target="_blank" rel="noopener">github版本:Android 使用gradle打包的各种配置</a></p>
+
       
     </div>
     
