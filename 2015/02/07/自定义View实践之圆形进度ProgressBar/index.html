@@ -88,19 +88,19 @@
 
 
 
-<meta name="description" content="这是继承View类的一个自定义View。为了实现一个带有进度文本的圆形ProgressBar，我们自定义开发一个RoundProgressBar。 &amp;lt;!– more -&amp;gt; 效果是这样的 1.新建一个ProgressBar类继承View类，复写其构造函数和onDraw函数；2.在values中建立一个attrs.xml文件来存放自定义view的属性；3.从xml文件中获取自定义的view">
+<meta name="description" content="这是继承View类的一个自定义View。为了实现一个带有进度文本的圆形ProgressBar，我们自定义开发一个RoundProgressBar。">
 <meta name="keywords" content="自定义View">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义View实践之圆形进度ProgressBar">
-<meta property="og:url" content="http://echomu.github.io/2018/02/07/自定义View实践之圆形进度ProgressBar/index.html">
+<meta property="og:url" content="http://echomu.github.io/2015/02/07/自定义View实践之圆形进度ProgressBar/index.html">
 <meta property="og:site_name" content="echoMu">
-<meta property="og:description" content="这是继承View类的一个自定义View。为了实现一个带有进度文本的圆形ProgressBar，我们自定义开发一个RoundProgressBar。 &amp;lt;!– more -&amp;gt; 效果是这样的 1.新建一个ProgressBar类继承View类，复写其构造函数和onDraw函数；2.在values中建立一个attrs.xml文件来存放自定义view的属性；3.从xml文件中获取自定义的view">
+<meta property="og:description" content="这是继承View类的一个自定义View。为了实现一个带有进度文本的圆形ProgressBar，我们自定义开发一个RoundProgressBar。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/817079-7b5fa86d50c91237.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-02-07T07:42:43.527Z">
+<meta property="og:updated_time" content="2018-02-07T07:45:02.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义View实践之圆形进度ProgressBar">
-<meta name="twitter:description" content="这是继承View类的一个自定义View。为了实现一个带有进度文本的圆形ProgressBar，我们自定义开发一个RoundProgressBar。 &amp;lt;!– more -&amp;gt; 效果是这样的 1.新建一个ProgressBar类继承View类，复写其构造函数和onDraw函数；2.在values中建立一个attrs.xml文件来存放自定义view的属性；3.从xml文件中获取自定义的view">
+<meta name="twitter:description" content="这是继承View类的一个自定义View。为了实现一个带有进度文本的圆形ProgressBar，我们自定义开发一个RoundProgressBar。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/817079-7b5fa86d50c91237.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -131,7 +131,7 @@
 
 
 
-  <link rel="canonical" href="http://echomu.github.io/2018/02/07/自定义View实践之圆形进度ProgressBar/"/>
+  <link rel="canonical" href="http://echomu.github.io/2015/02/07/自定义View实践之圆形进度ProgressBar/"/>
 
 
 
@@ -254,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://echomu.github.io/2018/02/07/自定义View实践之圆形进度ProgressBar/">
+    <link itemprop="mainEntityOfPage" href="http://echomu.github.io/2015/02/07/自定义View实践之圆形进度ProgressBar/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="echoMu">
@@ -283,8 +283,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-07T15:36:36+08:00">
-                2018-02-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-02-07T15:36:36+08:00">
+                2015-02-07
               </time>
             
 
@@ -302,9 +302,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/02/07/自定义View实践之圆形进度ProgressBar/#comments" itemprop="discussionUrl">
+                <a href="/2015/02/07/自定义View实践之圆形进度ProgressBar/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/02/07/自定义View实践之圆形进度ProgressBar/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2015/02/07/自定义View实践之圆形进度ProgressBar/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -333,7 +333,7 @@
 
       
         <p>这是继承View类的一个自定义View。<br>为了实现一个带有进度文本的圆形ProgressBar，我们自定义开发一个RoundProgressBar。</p>
-<p>&lt;!– more -&gt;</p>
+<a id="more"></a>
 <p>效果是这样的<br><img src="http://upload-images.jianshu.io/upload_images/817079-7b5fa86d50c91237.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="device-2017-02-24-165125.png"></p>
 <p>1.新建一个ProgressBar类继承View类，复写其构造函数和onDraw函数；<br>2.在values中建立一个attrs.xml文件来存放自定义view的属性；<br>3.从xml文件中获取自定义的view类中的各个属性值；<br>4.同时对使用者提供set和get方法进行各个属性的设置；</p>
 <p>首先要整理出我们需要的view的属性有哪些，我们定义了这些属性：</p>
@@ -556,15 +556,15 @@ protected void onDraw(Canvas canvas) {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/05/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/05/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -907,8 +907,8 @@ var jiathis_config={
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://echomu.github.io/2018/02/07/自定义View实践之圆形进度ProgressBar/';
-          this.page.identifier = '2018/02/07/自定义View实践之圆形进度ProgressBar/';
+          this.page.url = 'http://echomu.github.io/2015/02/07/自定义View实践之圆形进度ProgressBar/';
+          this.page.identifier = '2015/02/07/自定义View实践之圆形进度ProgressBar/';
           this.page.title = '自定义View实践之圆形进度ProgressBar';
         };
         var d = document, s = d.createElement('script');
