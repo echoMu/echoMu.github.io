@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://echomu.github.io/"/>
-  <updated>2018-02-07T08:20:57.624Z</updated>
+  <updated>2018-02-07T09:07:36.883Z</updated>
   <id>http://echomu.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>testpic</title>
+    <link href="http://echomu.github.io/2018/02/07/testpic/"/>
+    <id>http://echomu.github.io/2018/02/07/testpic/</id>
+    <published>2018-02-07T09:05:23.000Z</published>
+    <updated>2018-02-07T09:07:36.883Z</updated>
+    
+    <content type="html"><![CDATA[<img src="/2018/02/07/testpic/01.jpg" title="这是一个新的博客的图片的说明 01"><img src="/2018/02/07/testpic/02.jpg" title="这是一个新的博客的图片的说明 02"><img src="/2018/02/07/testpic/03.jpg" title="这是一个新的博客的图片的说明 03"><img src="/2018/02/07/testpic/04.jpg" title="这是一个新的博客的图片的说明 04"><img src="/2018/02/07/testpic/05.jpg" title="这是一个新的博客的图片的说明 05">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;img src=&quot;/2018/02/07/testpic/01.jpg&quot; title=&quot;这是一个新的博客的图片的说明 01&quot;&gt;
+&lt;img src=&quot;/2018/02/07/testpic/02.jpg&quot; title=&quot;这是一个新的博客的图片的说明 02&quot;&gt;
+&lt;img src=&quot;
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>自定义View实践之给图片加上水印（支持logo+文字）吧！</title>
