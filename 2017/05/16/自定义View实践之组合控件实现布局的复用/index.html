@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="自定义View," />
 
 
 
@@ -89,7 +89,7 @@
 
 
 <meta name="description" content="看到很多项目会有实现自己的标题栏的做法，通常的界面是左边按钮或文字，加上中间的标题和右边的按钮或文字组成的。比较好的一种做法是使用include标签，复用同一个xml文件来实现布局的复用。但是这种方法是通过代码的方式来设置标题，左右按钮等其他的属性，会导致布局属性和Activity代码耦合性比较高。 因此，我们要通过自定义View，继承ViewGroup子类来实现这样的布局，降低布局文件和Acti">
-<meta name="keywords" content="程序,文字,摄影">
+<meta name="keywords" content="自定义View">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义View实践之组合控件实现布局的复用">
 <meta property="og:url" content="http://echomu.github.io/2017/05/16/自定义View实践之组合控件实现布局的复用/index.html">
@@ -97,7 +97,7 @@
 <meta property="og:description" content="看到很多项目会有实现自己的标题栏的做法，通常的界面是左边按钮或文字，加上中间的标题和右边的按钮或文字组成的。比较好的一种做法是使用include标签，复用同一个xml文件来实现布局的复用。但是这种方法是通过代码的方式来设置标题，左右按钮等其他的属性，会导致布局属性和Activity代码耦合性比较高。 因此，我们要通过自定义View，继承ViewGroup子类来实现这样的布局，降低布局文件和Acti">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/817079-5f5a84081f8b69ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-02-07T08:06:13.340Z">
+<meta property="og:updated_time" content="2018-02-07T08:18:24.299Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义View实践之组合控件实现布局的复用">
 <meta name="twitter:description" content="看到很多项目会有实现自己的标题栏的做法，通常的界面是左边按钮或文字，加上中间的标题和右边的按钮或文字组成的。比较好的一种做法是使用include标签，复用同一个xml文件来实现布局的复用。但是这种方法是通过代码的方式来设置标题，左右按钮等其他的属性，会导致布局属性和Activity代码耦合性比较高。 因此，我们要通过自定义View，继承ViewGroup子类来实现这样的布局，降低布局文件和Acti">
@@ -360,6 +360,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/自定义View/" rel="tag"># 自定义View</a>
+          
+        </div>
+      
 
       
       
@@ -369,8 +375,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/27/自定义View实践之EditText字数的简单计数器/" rel="next" title="自定义View实践之EditText字数的简单计数器">
-                <i class="fa fa-chevron-left"></i> 自定义View实践之EditText字数的简单计数器
+              <a href="/2017/04/09/webView加载网页播放优酷视频引发“请允许cookie存储”问题的解决/" rel="next" title="webView加载网页播放优酷视频引发“请允许cookie存储”问题的解决">
+                <i class="fa fa-chevron-left"></i> webView加载网页播放优酷视频引发“请允许cookie存储”问题的解决
               </a>
             
           </div>
@@ -488,7 +494,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -501,7 +507,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
