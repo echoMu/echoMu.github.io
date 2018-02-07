@@ -335,7 +335,7 @@
         
           
             <p>这是继承View类的一个自定义View。<br>为了实现一个带有进度文本的圆形ProgressBar，我们自定义开发一个RoundProgressBar。</p>
-<p>&lt;!— more -&gt;</p>
+<p>&lt;!– more -&gt;</p>
 <p>效果是这样的<br><img src="http://upload-images.jianshu.io/upload_images/817079-7b5fa86d50c91237.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="device-2017-02-24-165125.png"></p>
 <p>1.新建一个ProgressBar类继承View类，复写其构造函数和onDraw函数；<br>2.在values中建立一个attrs.xml文件来存放自定义view的属性；<br>3.从xml文件中获取自定义的view类中的各个属性值；<br>4.同时对使用者提供set和get方法进行各个属性的设置；</p>
 <p>首先要整理出我们需要的view的属性有哪些，我们定义了这些属性：</p>
@@ -390,25 +390,26 @@
 </tbody>
 </table>
 <p>通过键值对的形式来存放键（name）：属性名，和值（format）：属性的类型（限制输入的类型），attrs.xml文件如下;</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+<pre><code class="java">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;
 &lt;resources&gt;
-&lt;declare-styleable name=&quot;RoundProgressBar&quot;&gt;
-    &lt;attr name=&quot;max&quot; format=&quot;integer&quot;&gt;&lt;/attr&gt;
-    &lt;attr name=&quot;startAngle&quot; format=&quot;integer&quot;&gt;&lt;/attr&gt;
-    &lt;attr name=&quot;backColor&quot; format=&quot;color&quot;&gt;&lt;/attr&gt;
-    &lt;attr name=&quot;roundColor&quot; format=&quot;color&quot;&gt;&lt;/attr&gt;
-    &lt;attr name=&quot;roundProgressColor&quot; format=&quot;color&quot;&gt;&lt;/attr&gt;
-    &lt;attr name=&quot;roundWidth&quot; format=&quot;dimension&quot;&gt;&lt;/attr&gt;
-    &lt;attr name=&quot;textColor&quot; format=&quot;color&quot;&gt;&lt;/attr&gt;
-    &lt;attr name=&quot;textSize&quot; format=&quot;dimension&quot;&gt;&lt;/attr&gt;
-    &lt;attr name=&quot;textIsDisplayable&quot; format=&quot;boolean&quot;&gt;&lt;/attr&gt;
-    &lt;attr name=&quot;style&quot;&gt;
-        &lt;enum name=&quot;STROKE&quot; value=&quot;0&quot;&gt;&lt;/enum&gt;
-        &lt;enum name=&quot;FILL&quot; value=&quot;1&quot;&gt;&lt;/enum&gt;
+&lt;declare-styleable name=<span class="string">"RoundProgressBar"</span>&gt;
+    &lt;attr name="max" format="integer"&gt;&lt;/attr&gt;
+    &lt;attr name="startAngle" format="integer"&gt;&lt;/attr&gt;
+    &lt;attr name="backColor" format="color"&gt;&lt;/attr&gt;
+    &lt;attr name="roundColor" format="color"&gt;&lt;/attr&gt;
+    &lt;attr name="roundProgressColor" format="color"&gt;&lt;/attr&gt;
+    &lt;attr name="roundWidth" format="dimension"&gt;&lt;/attr&gt;
+    &lt;attr name="textColor" format="color"&gt;&lt;/attr&gt;
+    &lt;attr name="textSize" format="dimension"&gt;&lt;/attr&gt;
+    &lt;attr name="textIsDisplayable" format="boolean"&gt;&lt;/attr&gt;
+    &lt;attr name=<span class="string">"style"</span>&gt;
+        &lt;enum name="STROKE" value="0"&gt;&lt;/enum&gt;
+        &lt;enum name="FILL" value="1"&gt;&lt;/enum&gt;
     &lt;/attr&gt;
 &lt;/declare-styleable&gt;
 &lt;/resources&gt;
-</code></pre><p>有了这些属性，我们就可以获取它们的值了，在ProgressBar类中的构造函数进行初始化工作，使用TypedArray，得到每一项属性的值：</p>
+</code></pre>
+<p>有了这些属性，我们就可以获取它们的值了，在ProgressBar类中的构造函数进行初始化工作，使用TypedArray，得到每一项属性的值：</p>
 <pre><code>TypedArray mTypedArray = context.obtainStyledAttributes(attrs, R.styleable.RoundProgressBar);
 //获取自定义属性和默认值，第一个参数是从用户属性中得到的设置，如果用户没有设置，那么就用默认的属性，即：第二个参数
 //圆环的颜色
