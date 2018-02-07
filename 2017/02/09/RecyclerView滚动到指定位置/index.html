@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="webView," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -88,20 +88,18 @@
 
 
 
-<meta name="description" content="最近，某个项目需要加载的网页内容中，含有一个优酷视频。跑起来出现了问题，优酷视频提示错误：请允许cookie存储 从这个错误提示来看，这里存在cookie存储的相关问题。是否是本地webView没有允许cookie存储？">
-<meta name="keywords" content="webView">
+<meta name="description" content="RecyclerView提供了若干个方法来进行滚动：1.scrollTo(int x, int y)  Set the scrolled position of your view.    和scrollBy(int x, int y)  Move the scrolled position of your view.     这2个方法需要我们去控制移动的距离，自己计算高度或者宽度。在动态的布局">
+<meta name="keywords" content="程序,文字,摄影">
 <meta property="og:type" content="article">
-<meta property="og:title" content="webView加载网页播放优酷视频引发“请允许cookie存储”问题的解决">
-<meta property="og:url" content="http://echomu.github.io/2017/04/09/webView加载网页播放优酷视频引发“请允许cookie存储”问题的解决/index.html">
+<meta property="og:title" content="RecyclerView滚动到指定位置">
+<meta property="og:url" content="http://echomu.github.io/2017/02/09/RecyclerView滚动到指定位置/index.html">
 <meta property="og:site_name" content="echoMu">
-<meta property="og:description" content="最近，某个项目需要加载的网页内容中，含有一个优酷视频。跑起来出现了问题，优酷视频提示错误：请允许cookie存储 从这个错误提示来看，这里存在cookie存储的相关问题。是否是本地webView没有允许cookie存储？">
+<meta property="og:description" content="RecyclerView提供了若干个方法来进行滚动：1.scrollTo(int x, int y)  Set the scrolled position of your view.    和scrollBy(int x, int y)  Move the scrolled position of your view.     这2个方法需要我们去控制移动的距离，自己计算高度或者宽度。在动态的布局">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/817079-b98c96477f367fef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-02-07T08:21:48.452Z">
+<meta property="og:updated_time" content="2018-02-07T08:28:53.174Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="webView加载网页播放优酷视频引发“请允许cookie存储”问题的解决">
-<meta name="twitter:description" content="最近，某个项目需要加载的网页内容中，含有一个优酷视频。跑起来出现了问题，优酷视频提示错误：请允许cookie存储 从这个错误提示来看，这里存在cookie存储的相关问题。是否是本地webView没有允许cookie存储？">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/817079-b98c96477f367fef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="RecyclerView滚动到指定位置">
+<meta name="twitter:description" content="RecyclerView提供了若干个方法来进行滚动：1.scrollTo(int x, int y)  Set the scrolled position of your view.    和scrollBy(int x, int y)  Move the scrolled position of your view.     这2个方法需要我们去控制移动的距离，自己计算高度或者宽度。在动态的布局">
 
 
 
@@ -131,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://echomu.github.io/2017/04/09/webView加载网页播放优酷视频引发“请允许cookie存储”问题的解决/"/>
+  <link rel="canonical" href="http://echomu.github.io/2017/02/09/RecyclerView滚动到指定位置/"/>
 
 
 
 
 
-  <title>webView加载网页播放优酷视频引发“请允许cookie存储”问题的解决 | echoMu</title>
+  <title>RecyclerView滚动到指定位置 | echoMu</title>
   
 
 
@@ -254,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://echomu.github.io/2017/04/09/webView加载网页播放优酷视频引发“请允许cookie存储”问题的解决/">
+    <link itemprop="mainEntityOfPage" href="http://echomu.github.io/2017/02/09/RecyclerView滚动到指定位置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="echoMu">
@@ -271,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">webView加载网页播放优酷视频引发“请允许cookie存储”问题的解决</h1>
+          <h1 class="post-title" itemprop="name headline">RecyclerView滚动到指定位置</h1>
         
 
         <div class="post-meta">
@@ -283,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-09T16:10:56+08:00">
-                2017-04-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-09T16:27:29+08:00">
+                2017-02-09
               </time>
             
 
@@ -302,9 +300,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/04/09/webView加载网页播放优酷视频引发“请允许cookie存储”问题的解决/#comments" itemprop="discussionUrl">
+                <a href="/2017/02/09/RecyclerView滚动到指定位置/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/04/09/webView加载网页播放优酷视频引发“请允许cookie存储”问题的解决/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/02/09/RecyclerView滚动到指定位置/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -332,19 +330,27 @@
       
 
       
-        <p>最近，某个项目需要加载的网页内容中，含有一个优酷视频。跑起来出现了问题，优酷视频提示错误：请允许cookie存储<br><img src="http://upload-images.jianshu.io/upload_images/817079-b98c96477f367fef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<p>从这个错误提示来看，这里存在cookie存储的相关问题。是否是本地webView没有允许cookie存储？</p>
-<a id="more"></a>
-<p>WebView是基于webkit内核的UI控件，相当于一个浏览器客户端。它会在本地维护每次会话的cookie(保存在data/data/package_name/app_WebView/Cookies.db)。</p>
-<p>当WebView加载URL的时候,WebView会从本地读取该URL对应的cookie，并携带该cookie与服务器进行通信。WebView通过android.webkit.<a href="https://developer.android.com/reference/android/webkit/CookieManager.html" target="_blank" rel="noopener">CookieManager</a>类来维护cookie。<a href="https://developer.android.com/reference/android/webkit/CookieManager.html" target="_blank" rel="noopener">CookieManager</a>是WebView的cookie管理类。</p>
-<p>那么，这里到底是哪里存在问题？考虑到出现该问题的设备是出现在Android 5.0系统上，于是翻阅Android开发者文档，找到<a href="https://developer.android.com/about/versions/android-5.0-changes.html" target="_blank" rel="noopener">Home&gt;Lollipop&gt;Android 5.0 行为变更</a>这一章节（请科学上网）。找到WebView这一部分的描述如下：</p>
+        <p>RecyclerView提供了若干个方法来进行滚动：<br>1.scrollTo(int x, int y)</p>
 <blockquote>
-<p>WebView<br>Android 5.0 更改了应用的默认行为。<br><strong>如果您的应用是面向 API 级别 21 或更高级别：</strong>默认情况下，系统会阻止<a href="https://developer.mozilla.org/en-US/docs/Security/MixedContent" target="_blank" rel="noopener">混合内容</a>和第三方 Cookie。要允许混合内容和第三方 Cookie，请分别使用<a href="https://developer.android.com/reference/android/webkit/WebSettings.html#setMixedContentMode(int" target="_blank" rel="noopener">setMixedContentMode()</a>)<br>和<a href="https://developer.android.com/reference/android/webkit/CookieManager.html#setAcceptThirdPartyCookies(android.webkit.WebView, boolean" target="_blank" rel="noopener">setAcceptThirdPartyCookies()</a>)<br>方法。<br>系统现在可以智能地选择要绘制的 HTML 文档部分。这个新的默认行为有助于减少内存占用和提升性能。如果您要一次渲染整个文档，可通过调用<a href="https://developer.android.com/reference/android/webkit/WebView.html#enableSlowWholeDocumentDraw(" target="_blank" rel="noopener">enableSlowWholeDocumentDraw()</a>)<br>停用此优化。<br><strong>如果您的应用是面向低于 21 的 API 级别：</strong>系统允许混合内容和第三方 Cookie，并始终一次渲染整个文档。 </p>
+<p>Set the scrolled position of your view.</p>
 </blockquote>
-<p>于是，我们找到了问题的根源所在，原来Android 5.0体统默认不支持第三方cookie的存储，像优酷视频这样的网页组件就无法正常播放视频了。</p>
-<p>找到解决方法，我们在加载该URL之前，加入一下代码，解决了问题。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(android.os.Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP)</span><br><span class="line">    CookieManager.getInstance().setAcceptThirdPartyCookies(webView,<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
-<p><a href="https://github.com/echoMu/Android-/blob/master/Android%20webView%E5%8A%A0%E8%BD%BD%E7%BD%91%E9%A1%B5%E6%92%AD%E6%94%BE%E4%BC%98%E9%85%B7%E8%A7%86%E9%A2%91%E5%BC%95%E5%8F%91%E7%9A%84%E9%97%AE%E9%A2%98.md" target="_blank" rel="noopener">github版本：Android webView加载网页播放优酷视频引发的问题</a></p>
+<p>  和scrollBy(int x, int y)</p>
+<blockquote>
+<p>Move the scrolled position of your view. </p>
+</blockquote>
+<p>  这2个方法需要我们去控制移动的距离，自己计算高度或者宽度。在动态的布局中且各项样式高度可能都不一样的情况下，比较有难度。</p>
+<a id="more"></a>
+<p>2.scrollToPosition(int position)</p>
+<blockquote>
+<p>Convenience method to scroll to a certain position. RecyclerView does not implement scrolling logic, rather forwards the call to RecyclerView.LayoutManager.scrollToPosition(int) </p>
+</blockquote>
+<p>使用scrollToPosition时，移动到当前屏幕可见列表的前面的项时，它会将要显示的项置顶。但是移动到后面的项时，一般会显示在最后的位置。</p>
+<p>因此，综合以上两个方法，我们可以先用scrollToPosition方法，将要置顶的项先移动显示出来，然后计算这一项离顶部的距离，用scrollBy完成最后的距离！</p>
+<p>首先，按照要置顶的那一项在当前屏幕可见的列表中的相对位置来区分要处理的情况：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">moveToPosition</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//获取当前recycleView屏幕可见的第一项和最后一项的Position</span></span><br><span class="line">    <span class="keyword">int</span> firstItem = linearLayoutManager.findFirstVisibleItemPosition();</span><br><span class="line">    <span class="keyword">int</span> lastItem = linearLayoutManager.findLastVisibleItemPosition();</span><br><span class="line">    <span class="comment">//然后区分情况</span></span><br><span class="line">    <span class="keyword">if</span> (index &lt;= firstItem) &#123;</span><br><span class="line">        <span class="comment">//当要置顶的项在当前显示的第一个项的前面时</span></span><br><span class="line">        rv.scrollToPosition(index);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (index &lt;= lastItem) &#123;</span><br><span class="line">        <span class="comment">//当要置顶的项已经在屏幕上显示时，计算它离屏幕原点的距离</span></span><br><span class="line">        <span class="keyword">int</span> top = rv.getChildAt(index - firstItem).getTop();</span><br><span class="line">        rv.scrollBy(<span class="number">0</span>, top);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//当要置顶的项在当前显示的最后一项的后面时</span></span><br><span class="line">        rv.scrollToPosition(index);</span><br><span class="line">        <span class="comment">//记录当前需要在RecyclerView滚动监听里面继续第二次滚动</span></span><br><span class="line">        move = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为recycleView添加滚动监听，当完成第一次滚动后，进行第二次的滚动：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用户点击的分类在rv的位置</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> mIndex;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * rv是否需要第二次滚动</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">boolean</span> move = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RecyclerViewListener</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">OnScrollListener</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onScrolled</span><span class="params">(RecyclerView recyclerView, <span class="keyword">int</span> dx, <span class="keyword">int</span> dy)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onScrolled(recyclerView, dx, dy);</span><br><span class="line">        <span class="comment">//在这里进行第二次滚动（最后的距离）</span></span><br><span class="line">        <span class="keyword">if</span> (move) &#123;</span><br><span class="line">            move = <span class="keyword">false</span>;</span><br><span class="line">            <span class="comment">//获取要置顶的项在当前屏幕的位置，mIndex是记录的要置顶项在RecyclerView中的位置</span></span><br><span class="line">            <span class="keyword">int</span> n = mIndex - linearLayoutManager.findFirstVisibleItemPosition();</span><br><span class="line">            <span class="keyword">if</span> (<span class="number">0</span> &lt;= n &amp;&amp; n &lt; rv.getChildCount()) &#123;</span><br><span class="line">                <span class="comment">//获取要置顶的项顶部离RecyclerView顶部的距离</span></span><br><span class="line">                <span class="keyword">int</span> top = rv.getChildAt(n).getTop();</span><br><span class="line">                <span class="comment">//最后的移动</span></span><br><span class="line">                rv.scrollBy(<span class="number">0</span>, top);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>至此，完成RecyclerView滚动到指定位置的任务。</p>
 
       
     </div>
@@ -360,12 +366,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/webView/" rel="tag"># webView</a>
-          
-        </div>
-      
 
       
       
@@ -375,8 +375,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/27/自定义View实践之EditText字数的简单计数器/" rel="next" title="自定义View实践之EditText字数的简单计数器">
-                <i class="fa fa-chevron-left"></i> 自定义View实践之EditText字数的简单计数器
+              <a href="/2016/09/08/gradle打包并推送到git远程库/" rel="next" title="gradle打包并推送到git远程库">
+                <i class="fa fa-chevron-left"></i> gradle打包并推送到git远程库
               </a>
             
           </div>
@@ -385,8 +385,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/16/自定义View实践之组合控件实现布局的复用/" rel="prev" title="自定义View实践之组合控件实现布局的复用">
-                自定义View实践之组合控件实现布局的复用 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/02/24/自定义View实践之圆形进度ProgressBar/" rel="prev" title="自定义View实践之圆形进度ProgressBar">
+                自定义View实践之圆形进度ProgressBar <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -730,9 +730,9 @@ var jiathis_config={
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://echomu.github.io/2017/04/09/webView加载网页播放优酷视频引发“请允许cookie存储”问题的解决/';
-          this.page.identifier = '2017/04/09/webView加载网页播放优酷视频引发“请允许cookie存储”问题的解决/';
-          this.page.title = 'webView加载网页播放优酷视频引发“请允许cookie存储”问题的解决';
+          this.page.url = 'http://echomu.github.io/2017/02/09/RecyclerView滚动到指定位置/';
+          this.page.identifier = '2017/02/09/RecyclerView滚动到指定位置/';
+          this.page.title = 'RecyclerView滚动到指定位置';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://hi.disqus.com/embed.js';
