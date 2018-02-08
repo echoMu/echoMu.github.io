@@ -1,0 +1,137 @@
+---
+title: 自定义View实践之EditText字数的简单计数器
+date: 2017-02-27 15:51:33
+tags: 自定义View
+---
+
+这是继承View类的子类来实现自定义View的例子。
+
+写一个类似于微博的140字限制的简单文本计算器，实现的思路是继承TextView,绑定一个EditText，通过添加EditText的addTextChangedListener，对调用者提供当前自定义View的回调接口，实现超出字数的回调。
+
+<!-- more -->
+
+自定义属性如下：
+
+``` java
+    <?xml version="1.0" encoding="utf-8"?>
+      <resources>
+        <declare-styleable name="CountCharTextView">
+          <!--用户可输入的最大字数-->
+          <attr name="maxChars" format="integer"></attr>
+          <!--溢出字数提示-->
+          <attr name="exceedTextColor" format="color"></attr>
+        </declare-styleable>
+      </resources>
+```
+
+继承TextView，实现以下CountCharTextView：
+
+``` java
+    /**
+     * 文本字数的简单计算器
+     * Created by echoMu on 2017/2/27.
+     */
+    public class CountCharTextView extends TextView {
+
+      private int maxChars;
+      private int defaultMaxChars = 500;
+      private int exceedTextColor;
+      private int defaultTextColor = Color.BLACK;
+
+      private CountCharChangedListener listener;
+
+      public interface CountCharChangedListener {
+        void onCountChanged(int countRemaining, boolean hasExceededLimit);
+      }
+
+      public CountCharTextView(Context context) {
+        this(context, null);
+      }
+
+      public CountCharTextView(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
+      }
+
+      public CountCharTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+
+        init(context, attrs);
+      }
+
+      private void init(Context context, AttributeSet attrs) {
+        setText(String.valueOf(maxLength));
+
+        TypedArray t = context.obtainStyledAttributes(attrs, R.styleable.CountCharTextView);
+        exceedTextColor = t.getColor(R.styleable.CountCharTextView_exceedTextColor, Color.RED);
+        maxChars = t.getInteger(R.styleable.CountCharTextView_maxChars, defaultMaxChars);
+
+        t.recycle();
+      }
+
+      public void setEditText(EditText targetEt) {
+        targetEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String inputText = editable.toString();
+                int leftChars = maxChars - inputText.length();
+                boolean hasExceeded = inputText.length() > maxChars;
+    //                if (leftChars <= (Math.round(maxChars * 0.1))) {
+                //剩下10%的字数，变色提示
+                if (leftChars <= 0) {
+                    //达到最大字数限制，变色提示
+                    setTextColor(exceedTextColor);
+                } else {
+                    setTextColor(defaultTextColor);
+                }
+                setText(String.valueOf(leftChars));
+                if (listener != null) {
+                    listener.onCountChanged(leftChars, hasExceeded);
+                } else {
+                    throw new NullPointerException("A CountCharChangedListener has not been set!");
+                }
+
+            }
+        });
+    }
+
+    public void setCharCountChangedListener(CountCharChangedListener listener) {
+        this.listener = listener;
+    }
+
+    public int getMaxChars() {
+        return maxChars;
+    }
+
+    /**
+     * 设置最大输入字符
+     *
+     * @param maxChars
+     */
+    public void setMaxChars(int maxChars) {
+        this.maxChars = maxChars;
+    }
+
+    public int getExceedTextColor() {
+        return exceedTextColor;
+    }
+
+    /**
+     * 设置溢出字符数文本颜色
+     *
+     * @param exceedTextColor
+     */
+    public void setExceedTextColor(int exceedTextColor) {
+        this.exceedTextColor = exceedTextColor;
+    }
+    }
+```

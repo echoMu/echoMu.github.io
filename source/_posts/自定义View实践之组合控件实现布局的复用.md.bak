@@ -1,0 +1,233 @@
+---
+title: 自定义View实践之组合控件实现布局的复用
+date: 2017-05-16 15:59:03
+tags: 自定义View
+---
+
+看到很多项目会有实现自己的标题栏的做法，通常的界面是左边按钮或文字，加上中间的标题和右边的按钮或文字组成的。比较好的一种做法是使用include标签，复用同一个xml文件来实现布局的复用。但是这种方法是通过代码的方式来设置标题，左右按钮等其他的属性，会导致布局属性和Activity代码耦合性比较高。
+
+因此，我们要通过自定义View，继承ViewGroup子类来实现这样的布局，降低布局文件和Activity代码耦合性。
+
+
+1. 首先，我们需要写出布局文件layout_custom_titlebar.xml。
+
+``` java
+    <?xml version="1.0" encoding="utf-8"?>
+    <merge xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 使用merge标签减少层级 -->
+    <Button
+        android:id="@+id/title_bar_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:background="@null"
+        android:minHeight="45dp"
+        android:minWidth="45dp"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/title_bar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:singleLine="true"
+        android:textSize="17sp" />
+
+    <Button
+        android:id="@+id/title_bar_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="7dp"
+        android:background="@null"
+        android:minHeight="45dp"
+        android:minWidth="45dp"
+        android:textSize="14sp" />
+
+    </merge>
+```
+
+2.定义自定义属性
+
+``` java
+    <declare-styleable name="CustomTitleBar">
+        <!--标题栏背景色-->
+        <attr name="title_background_color" format="reference|integer" />
+        <!--左边按钮是否可见-->
+        <attr name="left_button_visible" format="boolean" />
+        <!--右边按钮是否可见-->
+        <attr name="right_button_visible" format="boolean" />
+        <!--标题文字-->
+        <attr name="title_text" format="string" />
+        <!--标题文字颜色-->
+        <attr name="title_text_color" format="color" />
+        <!--标题文字图标-->
+        <attr name="title_text_drawable" format="reference|integer" />
+        <!--左边按钮文字-->
+        <attr name="left_button_text" format="string" />
+        <!--左边按钮文字颜色-->
+        <attr name="left_button_text_color" format="color" />
+        <!--左边按钮图标-->
+        <attr name="left_button_drawable" format="reference|integer" />
+        <!--右边按钮文字-->
+        <attr name="right_button_text" format="string" />
+        <!--右边按钮文字颜色-->
+        <attr name="right_button_text_color" format="color" />
+        <!--右边按钮图标-->
+        <attr name="right_button_drawable" format="reference|integer" />
+    </declare-styleable>
+```
+
+3.自定义一个View继承ViewGroup子类，这里我们继承RelativeLayout。
+
+``` java
+    public class CustomTitleBar extends RelativeLayout {
+    private Button titleBarLeftBtn;
+    private Button titleBarRightBtn;
+    private TextView titleBarTitle;
+
+    public CustomTitleBar(Context context) {
+        super(context);
+    }
+
+    public CustomTitleBar(Context context, AttributeSet attrs) {
+        super(context, attrs);
+
+        LayoutInflater.from(context).inflate(R.layout.layout_custom_titlebar,this,true);
+        titleBarLeftBtn = (Button) findViewById(R.id.title_bar_left);
+        titleBarRightBtn = (Button) findViewById(R.id.title_bar_right);
+        titleBarTitle = (TextView) findViewById(R.id.title_bar_title);
+
+        TypedArray typedArray=context.obtainStyledAttributes(attrs,R.styleable.CustomTitleBar);
+        if(typedArray!=null){
+            //titleBar背景色
+            int titleBarBackGround=typedArray.getResourceId(R.styleable.CustomTitleBar_title_background_color, Color.BLUE);
+            setBackgroundColor(titleBarBackGround);
+
+            //获取是否要显示左边按钮
+            boolean leftButtonVisible = typedArray.getBoolean(R.styleable.CustomTitleBar_left_button_visible, true);
+            if (leftButtonVisible) {
+                titleBarLeftBtn.setVisibility(View.VISIBLE);
+            } else {
+                titleBarLeftBtn.setVisibility(View.INVISIBLE);
+            }
+            //设置左边按钮的文字
+            String leftButtonText = typedArray.getString(R.styleable.CustomTitleBar_left_button_text);
+            if (!TextUtils.isEmpty(leftButtonText)) {
+                titleBarLeftBtn.setText(leftButtonText);
+                //设置左边按钮文字颜色
+                int leftButtonTextColor = typedArray.getColor(R.styleable.CustomTitleBar_left_button_text_color, Color.WHITE);
+                titleBarLeftBtn.setTextColor(leftButtonTextColor);
+            } else {
+                //设置左边图片icon 这里是二选一 要么只能是文字 要么只能是图片
+                int leftButtonDrawable = typedArray.getResourceId(R.styleable.CustomTitleBar_left_button_drawable, R.mipmap.titlebar_back_icon);
+                if (leftButtonDrawable != -1) {
+                    titleBarLeftBtn.setBackgroundResource(leftButtonDrawable);
+                }
+            }
+
+            //先获取标题是否要显示图片icon
+            int titleTextDrawable = typedArray.getResourceId(R.styleable.CustomTitleBar_title_text_drawable, -1);
+            if (titleTextDrawable != -1) {
+                titleBarTitle.setBackgroundResource(titleTextDrawable);
+            } else {
+                //如果不是图片标题 则获取文字标题
+                String titleText = typedArray.getString(R.styleable.CustomTitleBar_title_text);
+                if (!TextUtils.isEmpty(titleText)) {
+                    titleBarTitle.setText(titleText);
+                }
+                //获取标题显示颜色
+                int titleTextColor = typedArray.getColor(R.styleable.CustomTitleBar_title_text_color, Color.WHITE);
+                titleBarTitle.setTextColor(titleTextColor);
+            }
+
+            //获取是否要显示右边按钮
+            boolean rightButtonVisible = typedArray.getBoolean(R.styleable.CustomTitleBar_right_button_visible, true);
+            if (rightButtonVisible) {
+                titleBarRightBtn.setVisibility(View.VISIBLE);
+            } else {
+                titleBarRightBtn.setVisibility(View.INVISIBLE);
+            }
+            //设置右边按钮的文字
+            String rightButtonText = typedArray.getString(R.styleable.CustomTitleBar_right_button_text);
+            if (!TextUtils.isEmpty(rightButtonText)) {
+                titleBarRightBtn.setText(rightButtonText);
+                //设置右边按钮文字颜色
+                int rightButtonTextColor = typedArray.getColor(R.styleable.CustomTitleBar_right_button_text_color, Color.BLUE);
+                titleBarRightBtn.setTextColor(rightButtonTextColor);
+            } else {
+                //设置右边图片icon 这里是二选一 要么只能是文字 要么只能是图片
+                int rightButtonDrawable = typedArray.getResourceId(R.styleable.CustomTitleBar_right_button_drawable, -1);
+                if (rightButtonDrawable != -1) {
+                    titleBarRightBtn.setBackgroundResource(rightButtonDrawable);
+                }
+            }
+            typedArray.recycle();
+        }
+
+    }
+
+    public void setTitleClickListener(OnClickListener onClickListener) {
+        if (onClickListener != null) {
+            titleBarLeftBtn.setOnClickListener(onClickListener);
+            titleBarRightBtn.setOnClickListener(onClickListener);
+        }
+    }
+
+    public Button getTitleBarLeftBtn() {
+        return titleBarLeftBtn;
+    }
+
+    public Button getTitleBarRightBtn() {
+        return titleBarRightBtn;
+    }
+
+    public TextView getTitleBarTitle() {
+        return titleBarTitle;
+    }
+    }
+```
+
+4.正确地使用它
+
+``` java
+    <?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.mumubin.demoproject.view.CustomTitleBar
+        android:id="@+id/ctb_view"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        app:right_button_drawable="@mipmap/sure"
+        app:title_text="@string/app_name" />
+
+    <com.mumubin.demoproject.view.CustomTitleBar
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="4dp"
+        app:title_background_color="@color/colorPrimary"
+        app:title_text="@string/app_name"
+        app:title_text_color="@color/colorAccent"
+        app:left_button_text="左边"
+        app:right_button_text="右边"/>
+
+    <com.mumubin.demoproject.view.CustomTitleBar
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="4dp"
+        app:title_text_drawable="@mipmap/ic_launcher"
+        app:title_background_color="@color/colorAccent"
+        app:left_button_text="左边"
+        app:right_button_text="右边"/>
+    </LinearLayout>
+```
+
+
+![titlebar.png](http://upload-images.jianshu.io/upload_images/817079-5f5a84081f8b69ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
